@@ -25,16 +25,9 @@ public class ProyectoP1DP {
         int INF = Integer.MAX_VALUE / 2;
         int[][] dp = new int[j+1][m+1];
         
-        for (int k = 0; k <= j; k++) {
-            Arrays.fill(dp[k], INF);
-        }
-
-        // for (int k = 0; k <= j; k++) {
-        //     for (int m = 0; m < dp[k].length; m++) {
-        //         dp[k][m] = INF;
-        //     }
-        // }
+        for (int k = 0; k <= j; k++) Arrays.fill(dp[k], INF);
         
+
         dp[0][0] = 0;
         
         
@@ -45,20 +38,13 @@ public class ProyectoP1DP {
                 
                 int start = Math.max(0, -costAdd);
                 int end = Math.min(m, m - costAdd);
-                for (int c = start; c <= end; c++) {
-                    if (dp[k][c] != INF) {
-                        int newCost = c + costAdd;
-                        
-                        dp[k+1][newCost] = Math.min(dp[k+1][newCost], dp[k][c] + weight[i]);
-                    }
-                }
+                for (int c = start; c <= end; c++) if (dp[k][c] != INF) dp[k+1][c + costAdd] = Math.min(dp[k+1][c + costAdd], dp[k][c] + weight[i]);
             }
         }
         
         int ans = INF;
-        for (int c = 0; c <= m; c++) {
-            ans = Math.min(ans, dp[j][c]);
-        }
+        for (int c = 0; c <= m; c++) ans = Math.min(ans, dp[j][c]);
+        
         return ans;
     }
 }
