@@ -30,18 +30,18 @@ public class ProyectoP1DP {
         }
         dp[0][0] = 0;
         
-        // Iteramos sobre cada jugador en el orden original
+        
         for (int i = 0; i < n; i++) {
-            // Iteramos en orden inverso para evitar reutilizar el mismo jugador
+            
             for (int k = j - 1; k >= 0; k--) {
                 int costAdd = i - k;
-                // Ajustamos el rango de c para que newCost = c + costAdd esté en [0, m]
+                
                 int start = Math.max(0, -costAdd);
                 int end = Math.min(m, m - costAdd);
                 for (int c = start; c <= end; c++) {
                     if (dp[k][c] != INF) {
                         int newCost = c + costAdd;
-                        // newCost siempre estará entre 0 y m
+                        
                         dp[k+1][newCost] = Math.min(dp[k+1][newCost], dp[k][c] + pesos[i]);
                     }
                 }
