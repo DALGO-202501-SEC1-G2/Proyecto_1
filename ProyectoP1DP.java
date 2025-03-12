@@ -28,6 +28,13 @@ public class ProyectoP1DP {
         for (int k = 0; k <= j; k++) {
             Arrays.fill(dp[k], INF);
         }
+
+        // for (int k = 0; k <= j; k++) {
+        //     for (int m = 0; m < dp[k].length; m++) {
+        //         dp[k][m] = INF;
+        //     }
+        // }
+        
         dp[0][0] = 0;
         
         
