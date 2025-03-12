@@ -11,17 +11,17 @@ public class ProyectoP1DP {
             int n = sc.nextInt();
             int j = sc.nextInt();
             int m = sc.nextInt();
-            int[] pesos = new int[n];
+            int[] weight = new int[n];
             for (int i = 0; i < n; i++) {
-                pesos[i] = sc.nextInt();
+                weight[i] = sc.nextInt();
             }
-            int ans = solve(n, j, m, pesos);
+            int ans = solve(n, j, m, weight);
             System.out.println(ans);
         }
         sc.close();
     }
     
-    public static int solve(int n, int j, int m, int[] pesos) {
+    public static int solve(int n, int j, int m, int[] weight) {
         int INF = Integer.MAX_VALUE / 2;
         int[][] dp = new int[j+1][m+1];
         
@@ -42,7 +42,7 @@ public class ProyectoP1DP {
                     if (dp[k][c] != INF) {
                         int newCost = c + costAdd;
                         
-                        dp[k+1][newCost] = Math.min(dp[k+1][newCost], dp[k][c] + pesos[i]);
+                        dp[k+1][newCost] = Math.min(dp[k+1][newCost], dp[k][c] + weight[i]);
                     }
                 }
             }
